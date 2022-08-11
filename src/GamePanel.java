@@ -1,9 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.util.Random;
 
 
@@ -152,9 +149,42 @@ public class GamePanel extends JPanel implements ActionListener {
         repaint();
     }
 
-    public class MyKeyAdapter extends KeyAdapter {
+
+    //public class MyKeyAdapter extends KeyAdapter {
+    public class MyKeyAdapter implements KeyListener {
        //@Override
         public void KeyPressed(KeyEvent e) {
+/*            switch(e.getKeyCode()) {
+                case KeyEvent.VK_LEFT:
+                    if(direction != 'R') {
+                        direction = 'L';
+                    }
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    if(direction != 'L') {
+                        direction = 'R';
+                    }
+                    break;
+                case KeyEvent.VK_UP:
+                    if(direction != 'D') {
+                        direction = 'U';
+                    }
+                    break;
+                case KeyEvent.VK_DOWN:
+                    if(direction != 'U') {
+                        direction = 'D';
+                    }
+                    break;
+            }*/
+        }
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
             switch(e.getKeyCode()) {
                 case KeyEvent.VK_LEFT:
                     if(direction != 'R') {
@@ -177,6 +207,11 @@ public class GamePanel extends JPanel implements ActionListener {
                     }
                     break;
             }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
         }
     }
 }

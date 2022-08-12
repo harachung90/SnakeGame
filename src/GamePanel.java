@@ -58,9 +58,14 @@ public class GamePanel extends JPanel implements ActionListener {
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 } else {
                     g.setColor(new Color(45, 180, 0));
+                    g.setColor(new Color(random.nextInt(255), (random.nextInt(255)), (random.nextInt(255))));
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
+            g.setColor(Color.red);
+            g.setFont(new Font("Ink Free", Font.BOLD, 40));
+            FontMetrics metrics = getFontMetrics(g.getFont());
+            g.drawString("Score: " + applesEaten, (SCREEN_WIDTH - metrics.stringWidth("Score: " + applesEaten))/2, g.getFont().getSize());
         } else {
             gameOver(g);
         }
@@ -132,11 +137,17 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     public void gameOver(Graphics g) {
+        //Score text
+        g.setColor(Color.red);
+        g.setFont(new Font("Ink Free", Font.BOLD, 40));
+        FontMetrics metrics1 = getFontMetrics(g.getFont());
+        g.drawString("Score: " + applesEaten, (SCREEN_WIDTH - metrics1.stringWidth("Score: " + applesEaten))/2, g.getFont().getSize());
+
         //Game Over text
         g.setColor(Color.red);
         g.setFont(new Font("Ink Free", Font.BOLD, 75));
-        FontMetrics metrics = getFontMetrics(g.getFont());
-        g.drawString("Game Over", (SCREEN_WIDTH - metrics.stringWidth("Game Over"))/2, SCREEN_HEIGHT/2);
+        FontMetrics metrics2 = getFontMetrics(g.getFont());
+        g.drawString("Game Over", (SCREEN_WIDTH - metrics2.stringWidth("Game Over"))/2, SCREEN_HEIGHT/2);
     }
 
     @Override
@@ -152,32 +163,6 @@ public class GamePanel extends JPanel implements ActionListener {
 
     //public class MyKeyAdapter extends KeyAdapter {
     public class MyKeyAdapter implements KeyListener {
-       //@Override
-        public void KeyPressed(KeyEvent e) {
-/*            switch(e.getKeyCode()) {
-                case KeyEvent.VK_LEFT:
-                    if(direction != 'R') {
-                        direction = 'L';
-                    }
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    if(direction != 'L') {
-                        direction = 'R';
-                    }
-                    break;
-                case KeyEvent.VK_UP:
-                    if(direction != 'D') {
-                        direction = 'U';
-                    }
-                    break;
-                case KeyEvent.VK_DOWN:
-                    if(direction != 'U') {
-                        direction = 'D';
-                    }
-                    break;
-            }*/
-        }
-
         @Override
         public void keyTyped(KeyEvent e) {
 
